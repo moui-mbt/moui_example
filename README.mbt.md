@@ -21,6 +21,10 @@ mono-repo and is not built by the MoUI `dev-check.sh` baseline.
   `native` and `wasm-gc` targets.
 - `macos_skia/` — macOS native entrypoint using the Skia raster provider.
   Runs the app at 520×360 with the title "MoUI Quick Example".
+- `linux_skia/` — Linux native entrypoint using the Skia raster provider
+  with the Wayland `wl_shm` presenter. Runs the app at 520×360.
+- `windows_skia/` — Windows native entrypoint using the Skia raster provider
+  with the Win32 GDI presenter. Runs the app at 520×360.
 - `web_wasm/` — Web wasm-gc entrypoint using the browser WebGPU host import
   path. Imports `wzzc-dev/moui/backend/web` and exports the
   `web_dispatch_event` / `web_complete_async_*` bridge functions needed by
@@ -65,6 +69,22 @@ A 520×360 AppKit window titled "MoUI Quick Example" opens, renders a centered
 card with the current count, and dispatches `+` / `Reset` / `-` button
 clicks through the Skia raster mainline.
 
+### Linux Skia
+
+Requires a Wayland compositor and Skia link flags. See the [MoUI platform notes](https://github.com/wzzc-dev/MoUI/blob/main/docs/platform-notes.md#linux-native) for full setup.
+
+```sh
+moon run linux_skia --target native
+```
+
+### Windows Skia
+
+Requires Visual Studio C++ build tools and vcpkg `zlib:x64-windows`. See the [MoUI platform notes](https://github.com/wzzc-dev/MoUI/blob/main/docs/platform-notes.md#windows-native) for MSVC setup.
+
+```powershell
+powershell -ExecutionPolicy Bypass -Command "& { . .\scripts\windows\msvc_env.ps1; moon run windows_skia --target native }"
+```
+
 ### Web wasm-gc
 
 ```sh
@@ -95,6 +115,8 @@ examples/moui_example
 │   ├── app.mbt        ← Model / Msg / update / view / program
 │   └── counter_app_test.mbt
 ├── macos_skia         ← native Skia raster entrypoint
+├── linux_skia         ← native Wayland Skia entrypoint
+├── windows_skia       ← native Win32 Skia entrypoint
 └── web_wasm           ← Web wasm-gc + browser WebGPU host entrypoint
 ```
 
