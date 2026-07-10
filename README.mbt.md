@@ -8,7 +8,7 @@ construction. It is the recommended starting template for new MoUI apps and
 the repo referenced by the [MoUI README](https://github.com/wzzc-dev/MoUI)
 [Quick Start](https://github.com/wzzc-dev/MoUI#quick-start).
 
-This is a standalone repository that pins `wzzc-dev/moui@0.1.5` from the
+This is a standalone repository that pins `wzzc-dev/moui@0.1.6` from the
 MoonBit package registry; it is **not** a workspace member of the main MoUI
 mono-repo and is not built by the MoUI `dev-check.sh` baseline.
 
@@ -41,7 +41,7 @@ mono-repo and is not built by the MoUI `dev-check.sh` baseline.
 
 ```toml
 import {
-  "wzzc-dev/moui@0.1.5",
+  "wzzc-dev/moui@0.1.6",
 }
 ```
 
@@ -110,7 +110,7 @@ moon test app --target native
 
 ```text
 examples/moui_example
-├── moon.mod           ← standalone module (pin moui@0.1.5)
+├── moon.mod           ← standalone module (pin moui@0.1.6)
 ├── app
 │   ├── app.mbt        ← Model / Msg / update / view / program
 │   └── counter_app_test.mbt
